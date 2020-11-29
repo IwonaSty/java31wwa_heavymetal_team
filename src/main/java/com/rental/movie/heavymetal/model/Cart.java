@@ -3,10 +3,7 @@ package com.rental.movie.heavymetal.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Data
@@ -17,7 +14,11 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    private User user;
+    @OneToOne
+    private Order order;
 
-//    private List<Copy> copies;
+//    private User user; //TODO mapped two last relations: movies to copies and movies to opinions
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
+    private List<Copy> copies;
 }
