@@ -18,7 +18,12 @@ public class Order {
 
     private LocalDate orderDate;
 
-//    private User user;
+    @ManyToOne
+    private User user;
 
-//    private Cart cart;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Delivery delivery;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Cart cart;
 }
