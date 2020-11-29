@@ -1,16 +1,21 @@
 package com.rental.movie.heavymetal.model;
 
-import com.rental.movie.heavymetal.model.rating.GlobalRating;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 @Data
 @NoArgsConstructor
+@Entity
 public class Movie {
-
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String title;
 
@@ -22,7 +27,6 @@ public class Movie {
 
     private String description;
 
-    private GlobalRating globalrating;
 
 
 }

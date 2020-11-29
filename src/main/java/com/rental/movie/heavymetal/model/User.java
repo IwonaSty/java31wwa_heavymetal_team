@@ -4,12 +4,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class User {
-    private Integer id;
-    private String  name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String  firstName;
     private String lastName;
+    private String email;
+    private String password;
+
+    private Set<Order> orders;
 
 }
