@@ -15,9 +15,9 @@ public class Copy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Movie movie;
+//    private Movie movie;
 //    private boolean isRented;
-    private User user;
+//    private User user;
 
 
 }

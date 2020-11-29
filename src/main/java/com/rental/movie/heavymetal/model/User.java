@@ -20,6 +20,6 @@ public class User {
     private String email;
     private String password;
 
-    private Set<Order> orders;
+//    private Set<Order> orders;
 
 }
