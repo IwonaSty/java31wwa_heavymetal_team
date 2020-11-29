@@ -21,7 +21,7 @@ public class Movie {
 
     private String director;
 
-    private Genre genre;
+//    private Genre genre;
 
     private LocalDate releaseDate;
 
