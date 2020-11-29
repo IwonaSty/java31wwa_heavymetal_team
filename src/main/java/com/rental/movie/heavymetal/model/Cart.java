@@ -10,6 +10,6 @@ import java.util.List;
 public class Cart {
 
     private Integer id;
-    User user;
-    List<Copy> copies;
+    private User user;
+    private List<Copy> copies;
 }
