@@ -17,7 +17,7 @@ public class Order {
 
     private LocalDate orderDate;
 
-    private User user;
+//    private User user;
 
-    private Cart cart;
+//    private Cart cart;
 }

@@ -17,7 +17,7 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private User user;
+//    private User user;
 
-    private List<Copy> copies;
+//    private List<Copy> copies;
 }
