@@ -17,7 +17,6 @@ public class Cart {
     @OneToOne
     private Order order;
 
-//    private User user; //TODO mapped two last relations: movies to copies and movies to opinions
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
     private List<Copy> copies;

@@ -1,13 +1,11 @@
 package com.rental.movie.heavymetal.model.opinion;
 
+import com.rental.movie.heavymetal.model.Movie;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
@@ -19,5 +17,8 @@ public class Opinion {
     private Long id;
     private String userComment;
     private Double rating;
+
+    @ManyToOne
+    private Movie movie;
 
 }
