@@ -3,16 +3,16 @@ package com.rental.movie.heavymetal.services.impl;
 import com.rental.movie.heavymetal.model.User;
 import com.rental.movie.heavymetal.repositories.UserRepository;
 import com.rental.movie.heavymetal.services.UserService;
+import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-
-public class UserServiceImplementation implements UserService {
+@Service
+public class UserServiceImpl implements UserService {
 
     UserRepository userRepository;
 
-    public UserServiceImplementation(UserRepository repository) {
+    public UserServiceImpl(UserRepository repository) {
         this.userRepository = repository;
     }
 
@@ -23,13 +23,15 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public User getById(Integer id) {
+    public User getById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<User> getAll() {
-        return new LinkedList<User>((Collection<? extends User>) userRepository.findAll());
+        List<User> users = new LinkedList<>();
+        userRepository.findAll().iterator().forEachRemaining(users::add);
+        return users;
     }
 
     @Override
@@ -39,7 +41,7 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         userRepository.deleteById(id);
 
     }

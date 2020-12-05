@@ -6,7 +6,6 @@ import com.rental.movie.heavymetal.services.CopyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,7 +27,9 @@ public class CopyServiceImpl implements CopyService {
 
     @Override
     public List<Copy> getAll() {
-        return new LinkedList<Copy>((Collection<? extends Copy>) copyRepository.findAll());
+        List<Copy> copies = new LinkedList<>();
+        copyRepository.findAll().iterator().forEachRemaining(copies::add);
+        return copies;
     }
 
     @Override

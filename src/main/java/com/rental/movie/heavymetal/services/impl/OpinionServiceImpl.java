@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.LinkedList;
 import java.util.List;
 @Service
-public class OpinionServiceH2Implementation implements OpinionService {
+public class OpinionServiceImpl implements OpinionService {
 
 
     OpinionRepository repository;
 
-    public OpinionServiceH2Implementation(OpinionRepository repository) {
+    public OpinionServiceImpl(OpinionRepository repository) {
         this.repository = repository;
     }
 

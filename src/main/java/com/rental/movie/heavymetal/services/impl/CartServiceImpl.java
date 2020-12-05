@@ -5,7 +5,6 @@ import com.rental.movie.heavymetal.repositories.CartRepository;
 import com.rental.movie.heavymetal.services.CartService;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,7 +30,9 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public List<Cart> getAll() {
-        return new LinkedList<Cart>((Collection<? extends Cart>) cartRepositories.findAll());
+        List<Cart> carts = new LinkedList<>();
+        cartRepositories.findAll().iterator().forEachRemaining(carts::add);
+        return carts;
     }
 
     @Override
