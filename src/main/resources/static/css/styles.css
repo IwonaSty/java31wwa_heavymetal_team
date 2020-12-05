@@ -1,0 +1,92 @@
+
+body{
+    background-color: aliceblue;
+}
+h1,h2,h3,h4{
+    font-family: 'Montserrat',sans-serif;
+
+}
+
+
+
+/*CLASS_SECTION*/
+
+.header{
+    padding: 0 1rem;
+    background-color: #2d6187;
+}
+.big-heading{
+    font-size: 3.5rem;
+    line-height: 1.5;
+    color: aliceblue;
+    margin-bottom: 3rem;
+}
+.download-buttons{
+    margin-right: 1rem;
+}
+.row{
+padding: 0 2rem;
+}
+.nav-link{
+font-size: 1.5rem;
+font-weight: 100;
+}
+.mainImage{
+border: 3px solid aliceblue;
+width: 30%;
+vertical-align: middle;
+margin: 0 auto;
+}
+.space{
+margin: 0 0.5rem;
+color:#2d6187;
+}
+
+.download-buttons{
+margin-bottom:2rem;
+}
+
+
+/*ID_SECTION*/
+
+#navigation{
+    background-color: grey;
+    margin-bottom: 3rem;
+}
+
+#logo{
+     font-size: 3rem;
+     font-weight: 400;
+}
+
+#nav-pad{
+    padding: 0;
+}
+
+#title{
+background-color: grey;
+padding: 2rem 2rem 6rem;
+}
+#centerImage{
+text-align:center
+}
+
+#footer{
+text-align: center;
+margin-top:6rem;
+}
+
+/* QUERRY'S */
+
+@media (max-width: 1284px){
+
+#title{
+    text-align: center;
+}
+.mainImage{
+    position: static;
+    width: 80%;
+
+
+}
+
