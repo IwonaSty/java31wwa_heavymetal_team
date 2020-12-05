@@ -6,13 +6,13 @@ import com.rental.movie.heavymetal.model.Movie;
 import java.util.List;
 
 public interface CartService {
-    void save(Cart Cart);
+    void save(Cart cart);
 
-    Cart getById(Integer id);
+    Cart getById(Long id);
 
     List<Cart> getAll();
 
-    void update(Cart Cart);
+    void update(Cart cart);
 
-    void delete(Integer id);
+    void delete(Long id);
 }
