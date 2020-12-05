@@ -3,6 +3,7 @@ package com.rental.movie.heavymetal.services.impl;
 import com.rental.movie.heavymetal.model.Order;
 import com.rental.movie.heavymetal.model.User;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,8 +27,8 @@ class OrderServiceImplTest {
     private static Order order;
 
 
-    @BeforeAll
-    public static void init() {
+    @BeforeEach
+    public void init() {
         expectedId = 1L;
         order = new Order();
     }
