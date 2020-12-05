@@ -56,6 +56,7 @@ class OrderServiceImplTest {
         //when
         orderService.save(order);
         User user = new User();
+        user.setFirstName("Luke");
         userService.save(user);
         order.setUser(user);
         orderService.update(order);
@@ -63,6 +64,7 @@ class OrderServiceImplTest {
         //then
 
         User findUser = orderService.getById(expectedId).getUser();
+        System.out.println(findUser.getFirstName());
 
         assertNotNull(findUser);
     }
