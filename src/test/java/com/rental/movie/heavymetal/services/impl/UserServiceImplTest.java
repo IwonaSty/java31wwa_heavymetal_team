@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserServiceImplTest {
 
     @Autowired
-    private static UserService userService;
+    private  UserService userService;
 
     private static Long expectedId;
     private static User user;
