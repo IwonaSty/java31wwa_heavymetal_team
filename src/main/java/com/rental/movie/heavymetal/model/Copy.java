@@ -16,7 +16,8 @@ public class Copy {
     @ManyToOne
     private Cart cart;
 
-//    private Movie movie;
+    @ManyToOne
+    private Movie movie;
 //    private boolean isRented;
 //    private User user;
 
