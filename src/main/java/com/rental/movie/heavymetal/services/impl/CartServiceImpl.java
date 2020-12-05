@@ -1,27 +1,31 @@
 package com.rental.movie.heavymetal.services.impl;
 
 import com.rental.movie.heavymetal.model.Cart;
-import com.rental.movie.heavymetal.repositories.CarRepository;
+import com.rental.movie.heavymetal.repositories.CartRepository;
 import com.rental.movie.heavymetal.services.CartService;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CartServiceImplementation implements CartService {
-    CarRepository cartRepositories ;
+@Service
+public class CartServiceImpl implements CartService {
 
-    public CartServiceImplementation(CarRepository repository) {
+    CartRepository cartRepositories ;
+
+    public CartServiceImpl(CartRepository repository) {
         this.cartRepositories = repository;
     }
+
     @Override
-    public void save(Cart Cart) {
-        cartRepositories.save(Cart);
+    public void save(Cart cart) {
+        cartRepositories.save(cart);
 
     }
 
     @Override
-    public Cart getById(Integer id) {
+    public Cart getById(Long id) {
         return cartRepositories.findById(id).orElse(null);
     }
 
@@ -31,13 +35,13 @@ public class CartServiceImplementation implements CartService {
     }
 
     @Override
-    public void update(Cart Cart) {
-        cartRepositories.save(Cart);
+    public void update(Cart cart) {
+        cartRepositories.save(cart);
 
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         cartRepositories.deleteById(id);
 
 
