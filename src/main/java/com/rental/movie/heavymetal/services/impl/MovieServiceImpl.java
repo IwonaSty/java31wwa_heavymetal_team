@@ -9,11 +9,11 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 @Service
-public class MovieServiceH2Implementations implements MovieService {
+public class MovieServiceImpl implements MovieService {
 
     MovieRepository repository;
 
-    public MovieServiceH2Implementations(MovieRepository repository) {
+    public MovieServiceImpl (MovieRepository repository) {
         this.repository = repository;
     }
 
@@ -23,7 +23,7 @@ public class MovieServiceH2Implementations implements MovieService {
     }
 
     @Override
-    public Movie getById(Integer id) {
+    public Movie getById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
@@ -39,7 +39,7 @@ public class MovieServiceH2Implementations implements MovieService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 
         repository.deleteById(id);
 
