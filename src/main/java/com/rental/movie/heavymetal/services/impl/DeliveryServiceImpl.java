@@ -5,7 +5,6 @@ import com.rental.movie.heavymetal.repositories.DeliveryRepository;
 import com.rental.movie.heavymetal.services.DeliveryService;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,7 +30,9 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     @Override
     public List<Delivery> getAll() {
-        return new LinkedList<Delivery>((Collection<? extends Delivery>) deliveryRepository.findAll());
+        List<Delivery> deliveries = new LinkedList<>();
+        deliveryRepository.findAll().iterator().forEachRemaining(deliveries::add);
+        return deliveries;
     }
 
     @Override

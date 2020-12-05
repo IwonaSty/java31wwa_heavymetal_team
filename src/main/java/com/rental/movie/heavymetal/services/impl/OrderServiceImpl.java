@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.LinkedList;
 import java.util.List;
 @Service
-public class OrderServiceH2Implementation implements OrderService {
+public class OrderServiceImpl implements OrderService {
 
     OrderRepository repository;
 
-    public OrderServiceH2Implementation(OrderRepository repository) {
+    public OrderServiceImpl(OrderRepository repository) {
         this.repository = repository;
     }
 

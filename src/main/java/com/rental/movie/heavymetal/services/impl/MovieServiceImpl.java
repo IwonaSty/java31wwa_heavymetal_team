@@ -5,7 +5,6 @@ import com.rental.movie.heavymetal.repositories.MovieRepository;
 import com.rental.movie.heavymetal.services.MovieService;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 @Service
@@ -29,7 +28,9 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<Movie> getAll() {
-        return new LinkedList<Movie>((Collection<? extends Movie>) repository.findAll());
+        List<Movie> movies = new LinkedList<>();
+        repository.findAll().iterator().forEachRemaining(movies::add);
+        return movies;
     }
 
     @Override
