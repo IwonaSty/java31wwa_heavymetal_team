@@ -3,23 +3,22 @@ package com.rental.movie.heavymetal.services.impl;
 import com.rental.movie.heavymetal.model.User;
 import com.rental.movie.heavymetal.repositories.UserRepository;
 import com.rental.movie.heavymetal.services.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    UserRepository userRepository;
+   private final UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository repository) {
-        this.userRepository = repository;
-    }
 
 
     @Override
-    public void save(User User) {
-        userRepository.save(User);
+    public void save(User user) {
+        userRepository.save(user);
     }
 
     @Override
@@ -35,8 +34,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(User User) {
-        userRepository.save(User);
+    public void update(User user) {
+        userRepository.save(user);
 
     }
 
