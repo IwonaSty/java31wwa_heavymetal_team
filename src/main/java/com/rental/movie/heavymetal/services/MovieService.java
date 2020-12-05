@@ -8,11 +8,11 @@ public interface MovieService {
 
     void save(Movie Movie);
 
-    Movie getById(Integer id);
+    Movie getById(Long id);
 
     List<Movie> getAll();
 
     void update(Movie Movie);
 
-    void delete(Integer id);
+    void delete(Long id);
 }
