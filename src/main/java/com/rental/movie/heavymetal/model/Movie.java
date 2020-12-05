@@ -1,8 +1,7 @@
 package com.rental.movie.heavymetal.model;
 
 import com.rental.movie.heavymetal.model.opinion.Opinion;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 import javax.persistence.*;
@@ -10,8 +9,10 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Data
-@NoArgsConstructor
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +34,6 @@ public class Movie {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "movie")
     private Set<Opinion> opinions;
 
-
-
+   /* public Movie() {
+    }*/
 }
