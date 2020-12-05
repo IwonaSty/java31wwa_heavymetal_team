@@ -2,8 +2,6 @@ package com.rental.movie.heavymetal.services.impl;
 
 import com.rental.movie.heavymetal.model.Order;
 import com.rental.movie.heavymetal.model.User;
-import org.aspectj.weaver.ast.Or;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +33,7 @@ class OrderServiceImplTest {
     }
 
     @Test
-    public void opinionShouldBeAddedToRepository(){
+    public void orderShouldBeAddedToRepository(){
         //when
         orderService.save(order);
         List<Order> orders = orderService.getAll() ;
@@ -44,7 +42,7 @@ class OrderServiceImplTest {
     }
 
     @Test
-    public void opinionShouldBeFindable(){
+    public void orderShouldBeFindable(){
         //when
         orderService.save(order);
         Order addedOrder = orderService.getById(expectedId);
@@ -53,7 +51,7 @@ class OrderServiceImplTest {
     }
 
     @Test
-    public void opinionShouldBeUpdated(){
+    public void orderShouldBeUpdated(){
         //when
         orderService.save(order);
         User user = new User();
@@ -69,7 +67,7 @@ class OrderServiceImplTest {
     }
 
     @Test
-    public void opinionShouldBeDeleted(){
+    public void orderShouldBeDeleted(){
         //when
         orderService.save(order);
         orderService.delete(expectedId);
