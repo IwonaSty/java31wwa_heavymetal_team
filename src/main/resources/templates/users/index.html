@@ -38,8 +38,11 @@
             <td th:text="${user.firstName}"></td>
             <td th:text="${user.lastName}"></td>
             <td th:text="${user.userType.name}"></td>
+
             <td>
+                <a th:href="${'/user/delete?id='+user.id}">
                 <button class="btn btn-primary">DELETE USER</button>
+                </a>
             </td>
 
         </tr>
