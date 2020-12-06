@@ -1,5 +1,6 @@
 package com.rental.movie.heavymetal.services;
 
+import com.rental.movie.heavymetal.model.Genre;
 import com.rental.movie.heavymetal.model.Movie;
 
 import java.util.List;
@@ -17,5 +18,11 @@ public interface MovieService {
 
     void delete(Long id);
 
-    Optional<Movie> findByTitle(String Title);
+    Movie findByTitle(String Title);
+
+    Movie findByDirector(String director);
+
+    Movie findByGenre(Genre genre);
+
+
 }

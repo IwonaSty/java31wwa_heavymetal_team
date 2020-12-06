@@ -1,5 +1,6 @@
 package com.rental.movie.heavymetal.services.impl;
 
+import com.rental.movie.heavymetal.model.Genre;
 import com.rental.movie.heavymetal.model.Movie;
 import com.rental.movie.heavymetal.repositories.MovieRepository;
 import com.rental.movie.heavymetal.services.MovieService;
@@ -49,8 +50,19 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Optional<Movie> findByTitle(String Title) {
-        return repository.findByTitle(Title);
+    public Movie findByTitle(String Title) {
+        return repository.findByTitle(Title).orElse(null);
     }
+
+    @Override
+    public Movie findByDirector(String director) {
+        return  repository.findByDirector(director).orElse(null);
+    }
+
+    @Override
+    public Movie findByGenre(Genre genre) {
+        return repository.findByGenre(genre).orElse(null);
+    }
+
 
 }

@@ -14,6 +14,7 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
 
     Optional<Movie> findByTitle(String title);
     Optional<Movie> findByDirector(String director);
-    Optional<Movie> findByGenre(Enum<Genre> genre);
+    Optional<Movie> findByGenre(Genre genre);
+
 
 }
