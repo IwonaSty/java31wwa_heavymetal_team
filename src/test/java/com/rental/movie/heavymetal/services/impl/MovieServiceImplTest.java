@@ -1,5 +1,6 @@
 package com.rental.movie.heavymetal.services.impl;
 
+import com.rental.movie.heavymetal.model.Genre;
 import com.rental.movie.heavymetal.model.Movie;
 import com.rental.movie.heavymetal.repositories.MovieRepository;
 import org.junit.jupiter.api.AfterAll;
@@ -53,10 +54,31 @@ class MovieServiceImplTest {
     public void movieShouldBeFindableByTitle(){
         //when
         movieService.save(movie);
-        Movie addedMovie = movieService.findByTitle("Test movie").orElse(null);
+        Movie addedMovie = movieService.findByTitle("Test movie");
         //then
         assertEquals(addedMovie.getTitle(), movie.getTitle());
     }
+    @Test
+    public void movieShouldBeFindableByDirector(){
+        //when
+        movie.setDirector("TestDirector");
+        movieService.save(movie);
+        Movie addedMovie = movieService.findByDirector("TestDirector");
+        //then
+        assertEquals(addedMovie.getDirector(), movie.getDirector());
+    }
+    @Test
+    public void movieShouldBeFindableByGenre(){
+        //when
+
+        movie.setGenre(Genre.CARTOON);
+        movieService.save(movie);
+
+        Movie addedMovie = movieService.findByGenre(Genre.CARTOON);
+        //then
+        assertEquals(addedMovie.getGenre(), movie.getGenre());
+    }
+
 
     @Test
     public void movieShouldBeUpdated(){
