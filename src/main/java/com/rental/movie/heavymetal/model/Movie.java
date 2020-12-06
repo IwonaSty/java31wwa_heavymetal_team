@@ -22,7 +22,8 @@ public class Movie {
 
     private String director;
 
-//    private Genre genre;
+    @Enumerated
+    private Genre genre;
 
     private LocalDate releaseDate;
 

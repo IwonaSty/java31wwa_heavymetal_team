@@ -49,6 +49,13 @@ class MovieServiceImplTest {
         Movie addedMovie = movieService.getById(expectedId);
         //then
         assertEquals(addedMovie.getTitle(), movie.getTitle());
+    }    @Test
+    public void movieShouldBeFindableByTitle(){
+        //when
+        movieService.save(movie);
+        Movie addedMovie = movieService.findByTitle("Test movie").orElse(null);
+        //then
+        assertEquals(addedMovie.getTitle(), movie.getTitle());
     }
 
     @Test
