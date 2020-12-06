@@ -1,9 +1,6 @@
 package com.rental.movie.heavymetal.bootstrap;
 
-import com.rental.movie.heavymetal.model.Copy;
-import com.rental.movie.heavymetal.model.Genre;
-import com.rental.movie.heavymetal.model.Movie;
-import com.rental.movie.heavymetal.model.User;
+import com.rental.movie.heavymetal.model.*;
 import com.rental.movie.heavymetal.repositories.CopyRepository;
 import com.rental.movie.heavymetal.repositories.MovieRepository;
 import com.rental.movie.heavymetal.repositories.UserRepository;
@@ -120,6 +117,7 @@ public class InitDataBase implements CommandLineRunner {
                 .firstName("John")
                 .lastName("Krasinski")
                 .email("john.krasinski@poczta.pl")
+                .userType(UserType.GOLD)
                 .build();
 
         userRepository.save(user1);
@@ -128,6 +126,7 @@ public class InitDataBase implements CommandLineRunner {
                 .firstName("Roman")
                 .lastName("Polanski")
                 .email("roman.polanski@poczta.pl")
+                .userType(UserType.SILVER)
                 .build();
 
         userRepository.save(user2);
@@ -136,6 +135,7 @@ public class InitDataBase implements CommandLineRunner {
                 .firstName("Luke")
                 .lastName("Skywalker")
                 .email("luke.starKiller@vader.com")
+                .userType(UserType.PLATINUM)
                 .build();
 
         userRepository.save(user3);
@@ -144,6 +144,7 @@ public class InitDataBase implements CommandLineRunner {
                 .firstName("Amadeusz")
                 .lastName("Mozart")
                 .email("amadeusz.mozart@poczta.de")
+                .userType(UserType.GOLD)
                 .build();
 
         userRepository.save(user4);

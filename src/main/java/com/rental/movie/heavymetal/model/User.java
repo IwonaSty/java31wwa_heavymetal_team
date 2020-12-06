@@ -21,7 +21,7 @@ public class User {
     private String email;
     private String password;
     @Enumerated
-    private UserStatus userStatus;
+    private UserType userType;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Order> orders;
