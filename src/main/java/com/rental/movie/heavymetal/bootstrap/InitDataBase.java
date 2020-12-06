@@ -3,8 +3,10 @@ package com.rental.movie.heavymetal.bootstrap;
 import com.rental.movie.heavymetal.model.Copy;
 import com.rental.movie.heavymetal.model.Genre;
 import com.rental.movie.heavymetal.model.Movie;
+import com.rental.movie.heavymetal.model.User;
 import com.rental.movie.heavymetal.repositories.CopyRepository;
 import com.rental.movie.heavymetal.repositories.MovieRepository;
+import com.rental.movie.heavymetal.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -14,10 +16,13 @@ import java.time.LocalDate;
 public class InitDataBase implements CommandLineRunner {
     private final MovieRepository movieRepository;
     private final CopyRepository copyRepository;
+    private final UserRepository userRepository;
 
-    public InitDataBase(final MovieRepository movieRepository, CopyRepository copyRepository) {
+    public InitDataBase(final MovieRepository movieRepository, final CopyRepository copyRepository,
+                        final UserRepository userRepository) {
         this.movieRepository = movieRepository;
         this.copyRepository = copyRepository;
+        this.userRepository = userRepository;
     }
 
 
@@ -25,6 +30,7 @@ public class InitDataBase implements CommandLineRunner {
     public void run(String... args) throws Exception {
         initMovies();
         initCopies();
+        initUsers();
     }
 
     public void initMovies() {
@@ -105,6 +111,42 @@ public class InitDataBase implements CommandLineRunner {
         copyRepository.save(copy6);
         movie4.getCopies().add(copy6);
         movieRepository.save(movie4);
+    }
+
+    public void initUsers() {
+
+
+        User user1 = User.builder()
+                .firstName("John")
+                .lastName("Krasinski")
+                .email("john.krasinski@poczta.pl")
+                .build();
+
+        userRepository.save(user1);
+
+        User user2 = User.builder()
+                .firstName("Roman")
+                .lastName("Polanski")
+                .email("roman.polanski@poczta.pl")
+                .build();
+
+        userRepository.save(user2);
+
+        User user3 = User.builder()
+                .firstName("Luke")
+                .lastName("Skywalker")
+                .email("luke.starKiller@vader.com")
+                .build();
+
+        userRepository.save(user3);
+
+        User user4 = User.builder()
+                .firstName("Amadeusz")
+                .lastName("Mozart")
+                .email("amadeusz.mozart@poczta.de")
+                .build();
+
+        userRepository.save(user4);
     }
 
 
