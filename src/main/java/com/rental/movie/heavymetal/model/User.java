@@ -20,6 +20,8 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+    @Enumerated
+    private UserStatus userStatus;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Order> orders;
