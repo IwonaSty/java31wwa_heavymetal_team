@@ -15,7 +15,49 @@
 </head>
 <body>
 
+<div class="container-fluid">
 
+    <section id="title">
+
+        <h1 class="big-heading">LIST OF USERS</h1>
+
+    </section>
+    <table class="table">
+        <thead>
+
+        <tr>
+            <td><h2>FIRST NAME</h2></td>
+            <td><h2>LAST NAME</h2></td>
+            <td><h2>USER STATUS</h2></td>
+            <td></td>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr th:each="user:${users}">
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.userStatus}"></td>
+            //TODO: widok enuma status usera
+            <td>
+                <button class="btn btn-primary">DELETE USER</button>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <section>
+
+
+    </section>
+
+
+    <section>
+        <a th:href="@{'/'}">
+            <button class="btn btn-primary">RETURN</button>
+        </a>
+    </section>
+</div>
 
 
 
