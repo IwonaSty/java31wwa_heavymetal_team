@@ -1,13 +1,12 @@
 package com.rental.movie.heavymetal.model.opinion;
 
 import com.rental.movie.heavymetal.model.Movie;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

@@ -6,9 +6,11 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Builder
 @AllArgsConstructor
@@ -29,11 +31,11 @@ public class Movie {
 
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "movie")
-    private Set<Copy> copies;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "movie",fetch = FetchType.EAGER)
+    private Set<Copy> copies = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "movie")
-    private Set<Opinion> opinions;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "movie",fetch = FetchType.EAGER)
+    private Set<Opinion> opinions  = new HashSet<>();
 
    /* public Movie() {
     }*/
