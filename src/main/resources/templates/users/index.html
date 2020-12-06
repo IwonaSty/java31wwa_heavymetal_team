@@ -37,8 +37,7 @@
         <tr th:each="user:${users}">
             <td th:text="${user.firstName}"></td>
             <td th:text="${user.lastName}"></td>
-            <td th:text="${user.userStatus}"></td>
-            //TODO: widok enuma status usera
+            <td th:text="${user.userType.name}"></td>
             <td>
                 <button class="btn btn-primary">DELETE USER</button>
             </td>

@@ -22,4 +22,8 @@ public class Cart {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
     private List<Copy> copies;
+
+    public void addCopyToCart(Copy copy) {
+        copies.add(copy);
+    }
 }
