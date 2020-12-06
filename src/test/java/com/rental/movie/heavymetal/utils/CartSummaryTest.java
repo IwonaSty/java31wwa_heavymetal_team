@@ -1,8 +1,6 @@
 package com.rental.movie.heavymetal.utils;
 
-import com.rental.movie.heavymetal.model.Movie;
-import com.rental.movie.heavymetal.model.User;
-import com.rental.movie.heavymetal.model.UserType;
+import com.rental.movie.heavymetal.model.*;
 import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -116,8 +116,36 @@ class CartSummaryTest {
     @Test
     public void shouldCalculateCostOfCopyOfPremiereMovieForPlatinumUser(){
         //given
+        User user = User.builder().userType(UserType.PLATINUM).build();
+        Movie movie = Movie.builder().releaseDate(LocalDate.of(2020, 1, 1)).build();
+        Copy copy = Copy.builder().movie(movie).build();
+        LocalDate rentDate = LocalDate.of(2020, 1, 10);
+        int rentalDays = 8;
         //when
+        int resultInInt = cartSummary.calculateCostOfCopy(user, copy, rentalDays, rentDate).intValue();
         //then
+        int expectedInInt = 105; // 50 * 3 * 0.7
+        assertEquals(expectedInInt, resultInInt); //int Value becouse in Big Decimal Expected was 105.0 and Actual:105.00
+    }
+
+    @Test
+    public void shouldMakeCartSummary(){
+        //given
+        User user = User.builder().userType(UserType.PLATINUM).build();
+        Movie movie = Movie.builder().releaseDate(LocalDate.of(2020, 1, 1)).build();
+        Copy copy = Copy.builder().movie(movie).build();
+        LocalDate rentDate = LocalDate.of(2020, 1, 10);
+        int rentalDays = 8;
+        Cart cart = new Cart();
+        Map<Copy, Integer> map = new HashMap<>();
+        cart.setDaysOfRenting(map);
+        cart.getDaysOfRenting().put(copy, rentalDays);
+        //when
+        cartSummary.makeSummary(user, cart, rentDate);
+        int resultInInt = cart.getCostSummary().intValue();
+        //then
+        int expectedInInt = 105; // 50 * 3 * 0.7
+        assertEquals(expectedInInt, resultInInt); //int Value becouse in Big Decimal Expected was 105.0 and Actual:105.00
     }
 
 

@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -25,5 +26,8 @@ public class Cart {
     private List<Copy> copies;
 
     private BigDecimal costSummary;
+
+    @Transient
+    private Map<Copy, Integer> daysOfRenting;
 
 }

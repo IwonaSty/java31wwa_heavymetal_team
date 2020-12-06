@@ -1,12 +1,15 @@
 package com.rental.movie.heavymetal.utils;
 
 import com.rental.movie.heavymetal.model.*;
+import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Component
 public class CartSummary {
@@ -32,7 +35,22 @@ public class CartSummary {
 
 
 
-    public void makeSummary(Cart cart) {
+    public void makeSummary(User user, Cart cart, LocalDate localDate) {
+        cart.setCostSummary(BigDecimal.ZERO);
+        Map<Copy, Integer> daysOfRentingForCopy = cart.getDaysOfRenting();
+        Set<Map.Entry<Copy, Integer>> entrySet = daysOfRentingForCopy.entrySet();
+        for (Map.Entry<Copy, Integer> entry : entrySet){
+            BigDecimal costSummary = cart.getCostSummary();
+            BigDecimal costOfCopy = calculateCostOfCopy(user, entry.getKey(), entry.getValue(), localDate );
+            cart.setCostSummary(costSummary.add(costOfCopy));
+        }
+
+
+        /*for (Map.Entry<Copy, Integer> entry : daysOfRentingForCopy.entrySet()) {
+            BigDecimal costSummary = cart.getCostSummary();
+            BigDecimal costOfCopy = calculateCostOfCopy(user, entry.getKey(), entry.getValue(), localDate );
+            cart.setCostSummary(costSummary.add(costOfCopy));
+        }*/
     }
 
     public BigDecimal calculateCostOfCopy(User user, Copy copy, int rentalDays, LocalDate rentDate) {
