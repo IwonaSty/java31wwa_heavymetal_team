@@ -3,6 +3,7 @@ package com.rental.movie.heavymetal.services;
 import com.rental.movie.heavymetal.model.Movie;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MovieService {
 
@@ -15,4 +16,6 @@ public interface MovieService {
     void update(Movie movie);
 
     void delete(Long id);
+
+    Optional<Movie> findByTitle(String Title);
 }
