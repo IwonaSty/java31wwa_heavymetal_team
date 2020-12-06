@@ -3,7 +3,9 @@ package com.rental.movie.heavymetal.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -23,7 +25,9 @@ public class Cart {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
     private List<Copy> copies;
 
-    public void addCopyToCart(Copy copy) {
-        copies.add(copy);
-    }
+    private BigDecimal costSummary;
+
+    @Transient
+    private Map<Copy, Integer> daysOfRenting;
+
 }
