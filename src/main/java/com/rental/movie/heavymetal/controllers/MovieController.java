@@ -4,6 +4,7 @@ import com.rental.movie.heavymetal.services.MovieService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MovieController {
@@ -18,5 +19,14 @@ public class MovieController {
     public String getMovieIndex(Model model) {
         model.addAttribute("movies", service.getAll());
         return "movies/index";
+    }
+
+    @GetMapping("/movie")
+    public String getOneWorker(@RequestParam Long id, Model model) {
+
+        model.addAttribute("movie",service.getById(id));
+
+        return "movies/movie";
+
     }
 }
