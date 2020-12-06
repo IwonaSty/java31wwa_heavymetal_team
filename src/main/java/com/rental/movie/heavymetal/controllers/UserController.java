@@ -1,9 +1,13 @@
 package com.rental.movie.heavymetal.controllers;
 
+import com.rental.movie.heavymetal.model.User;
+import com.rental.movie.heavymetal.repositories.UserRepository;
 import com.rental.movie.heavymetal.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -20,6 +24,13 @@ public class UserController {
             return "users/index";
 
         }
+    @RequestMapping(value="/user/delete")
+    public String deleteUser(@RequestParam Long id , Model model) {
+
+            userService.delete(id);
+            return "redirect:/users";
+
+    }
 
 
     }
