@@ -4,22 +4,27 @@ import com.rental.movie.heavymetal.model.*;
 import com.rental.movie.heavymetal.repositories.CopyRepository;
 import com.rental.movie.heavymetal.repositories.MovieRepository;
 import com.rental.movie.heavymetal.repositories.UserRepository;
+import com.rental.movie.heavymetal.services.RoleService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
+import java.util.List;
 
 @Component
 public class InitDataBase implements CommandLineRunner {
     private final MovieRepository movieRepository;
     private final CopyRepository copyRepository;
     private final UserRepository userRepository;
+    private final RoleService roleService;
 
     public InitDataBase(final MovieRepository movieRepository, final CopyRepository copyRepository,
-                        final UserRepository userRepository) {
+                        final UserRepository userRepository, RoleService roleService) {
         this.movieRepository = movieRepository;
         this.copyRepository = copyRepository;
         this.userRepository = userRepository;
+        this.roleService = roleService;
     }
 
 
@@ -31,6 +36,8 @@ public class InitDataBase implements CommandLineRunner {
     }
 
     public void initMovies() {
+
+
 
         Movie movie1 = Movie.builder()
                 .title("The Big Blue")
@@ -111,14 +118,28 @@ public class InitDataBase implements CommandLineRunner {
     }
 
     public void initUsers() {
+        Role role1 = new Role();
+        role1.setName("USER");
+        roleService.save(role1);
+
+        Role role2 = new Role();
+        role2.setName("ADMIN");
+        roleService.save(role2);
+
+        List<Role> list1 = new LinkedList<>();
+        list1.add(role1);
+        List<Role> list2 = new LinkedList<>();
+        list2.add(role2);
 
 
         User user1 = User.builder()
                 .firstName("John")
                 .lastName("Krasinski")
                 .email("john.krasinski@poczta.pl")
+                .password("$2a$10$gQuB16dflwFLHC/eo1PiUeYJE.XOAeqNtvmkaqtk6rWqIJMn279Ly")
                 .userType(UserType.GOLD)
                 .build();
+        user1.setRoles(list1);
 
         userRepository.save(user1);
 
@@ -126,26 +147,30 @@ public class InitDataBase implements CommandLineRunner {
                 .firstName("Roman")
                 .lastName("Polanski")
                 .email("roman.polanski@poczta.pl")
+                .password("$2a$10$gQuB16dflwFLHC/eo1PiUeYJE.XOAeqNtvmkaqtk6rWqIJMn279Ly")
                 .userType(UserType.SILVER)
                 .build();
-
+        user2.setRoles(list2);
         userRepository.save(user2);
 
         User user3 = User.builder()
                 .firstName("Luke")
                 .lastName("Skywalker")
                 .email("luke.starKiller@vader.com")
+                .password("$2a$10$gQuB16dflwFLHC/eo1PiUeYJE.XOAeqNtvmkaqtk6rWqIJMn279Ly")
                 .userType(UserType.PLATINUM)
                 .build();
-
+        user3.setRoles(list1);
         userRepository.save(user3);
 
         User user4 = User.builder()
                 .firstName("Amadeusz")
                 .lastName("Mozart")
                 .email("amadeusz.mozart@poczta.de")
+                .password("$2a$10$gQuB16dflwFLHC/eo1PiUeYJE.XOAeqNtvmkaqtk6rWqIJMn279Ly")
                 .userType(UserType.GOLD)
                 .build();
+        user4.setRoles(list1);
 
         userRepository.save(user4);
     }

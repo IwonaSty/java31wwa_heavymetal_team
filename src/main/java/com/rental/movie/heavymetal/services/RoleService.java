@@ -5,5 +5,7 @@ import com.rental.movie.heavymetal.model.Role;
 
 public interface RoleService {
 
+    Role save(Role role);
+
     Role findByName(String name);
 }

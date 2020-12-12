@@ -11,7 +11,7 @@ import java.util.List;
 
 @Controller
 public class indexController {
-    @GetMapping({"/",""})
+    @GetMapping({"/","","/index"})
     public String index() {
 
 //        List<Genre> genres = new LinkedList<>();
