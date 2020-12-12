@@ -1,11 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Users</title>
+    <title>Add new User</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -16,52 +13,84 @@
 <body>
 
 <div class="container-fluid">
+<h1>Add New User</h1>
 
-    <section id="title">
 
-        <h1 class="big-heading">LIST OF USERS</h1>
+<form method="post" th:action="@{/save-user}" th:object="${user}">
 
-    </section>
-    <table class="table">
-        <thead>
+    <table>
+
+        <tbody>
 
         <tr>
-            <td><h2>FIRST NAME</h2></td>
-            <td><h2>LAST NAME</h2></td>
-            <td><h2>USER STATUS</h2></td>
-            <td></td>
-        </tr>
-
-        </thead>
-        <tbody>
-        <tr th:each="user:${users}">
-            <td th:text="${user.firstName}"></td>
-            <td th:text="${user.lastName}"></td>
-            <td th:text="${user.userType.name}"></td>
-
             <td>
-                <a th:href="${'/user/delete?id='+user.id}">
-                <button class="btn btn-primary">DELETE USER</button>
-                </a>
+                <input type="hidden" th:field="*{id}">
             </td>
-
         </tr>
+
+        <tr>
+            <td th:text = "'First Name'" />
+            <td>
+                <input type="text" th:field="*{firstName}">
+            </td>
+        </tr>
+
+        <tr>
+            <td th:text = "'Last Name'" />
+            <td>
+                <input type="text" th:field="*{lastName}">
+            </td>
+        </tr>
+
+        <tr>
+            <td th:text = "'Email'" />
+            <td>
+                <input type="text" th:field="*{email}">
+            </td>
+        </tr>
+
+        <tr>
+            <td th:text = "'Password'" />
+            <td>
+                <input type="text" th:field="*{password}">
+            </td>
+        </tr>
+
+        <tr>
+            <td th:text = "'User Type'" />
+            <td>
+                <select class="form-control" th:field="*{userType}">
+
+                    <option th:each="userType : ${userTypes}"
+                            th:value="${userType}" th:text="${userType.name}"></option>
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td th:text = "'Orders'" />
+            <td>
+                <input type="hidden" th:field="*{orders}">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button type="submit">Zapisz</button>
+            </td>
+        </tr>
+
         </tbody>
+
     </table>
-    <section>
-    <a th:href="@{'/addNewUser'}">
-        <button class="btn btn-primary">Add User</button>
-    </a>
 
-    </section>
+</form>
 
-
-    <section>
-        <a th:href="@{'/'}">
-            <button class="btn btn-primary">RETURN</button>
-        </a>
-    </section>
 </div>
+
+
+
+
 
 
 
