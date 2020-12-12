@@ -1,4 +1,4 @@
-package com.rental.movie.heavymetal.services;
+/*package com.rental.movie.heavymetal.services;
 
 import com.rental.movie.heavymetal.model.Cart;
 import com.rental.movie.heavymetal.model.Movie;
@@ -15,4 +15,4 @@ public interface CartService {
     void update(Cart cart);
 
     void delete(Long id);
-}
+}*/

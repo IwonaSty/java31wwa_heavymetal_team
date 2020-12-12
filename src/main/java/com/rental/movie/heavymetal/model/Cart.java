@@ -1,4 +1,4 @@
-package com.rental.movie.heavymetal.model;
+/*package com.rental.movie.heavymetal.model;
 
 import lombok.*;
 
@@ -30,4 +30,4 @@ public class Cart {
     @Transient
     private Map<Copy, Integer> daysOfRenting;
 
-}
+}*/

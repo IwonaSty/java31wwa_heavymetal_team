@@ -1,4 +1,4 @@
-package com.rental.movie.heavymetal.repositories;
+/*package com.rental.movie.heavymetal.repositories;
 
 import com.rental.movie.heavymetal.model.Cart;
 import com.rental.movie.heavymetal.model.Movie;
@@ -8,4 +8,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CartRepository extends CrudRepository<Cart, Long> {
-}
+}*/

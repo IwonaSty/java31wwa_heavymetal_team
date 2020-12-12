@@ -35,7 +35,7 @@ public class CartSummary {
 
 
 
-    public void makeSummary(User user, Cart cart, LocalDate localDate) {
+/*    public void makeSummary(User user, Cart cart, LocalDate localDate) {
         cart.setCostSummary(BigDecimal.ZERO);
         Map<Copy, Integer> daysOfRentingForCopy = cart.getDaysOfRenting();
         Set<Map.Entry<Copy, Integer>> entrySet = daysOfRentingForCopy.entrySet();
@@ -44,14 +44,9 @@ public class CartSummary {
             BigDecimal costOfCopy = calculateCostOfCopy(user, entry.getKey(), entry.getValue(), localDate );
             cart.setCostSummary(costSummary.add(costOfCopy));
         }
+        }
+        */
 
-
-        /*for (Map.Entry<Copy, Integer> entry : daysOfRentingForCopy.entrySet()) {
-            BigDecimal costSummary = cart.getCostSummary();
-            BigDecimal costOfCopy = calculateCostOfCopy(user, entry.getKey(), entry.getValue(), localDate );
-            cart.setCostSummary(costSummary.add(costOfCopy));
-        }*/
-    }
 
     public BigDecimal calculateCostOfCopy(User user, Copy copy, int rentalDays, LocalDate rentDate) {
         BigDecimal basicCost = calculateBasicCost(rentalDays);

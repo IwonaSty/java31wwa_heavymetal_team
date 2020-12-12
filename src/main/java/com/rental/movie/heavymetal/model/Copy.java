@@ -15,8 +15,8 @@ public class Copy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Cart cart;
+/*    @ManyToOne
+    private Cart cart;*/
 
     @ManyToOne
     private Movie movie;

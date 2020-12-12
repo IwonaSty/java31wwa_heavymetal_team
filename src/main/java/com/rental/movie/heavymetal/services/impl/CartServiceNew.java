@@ -1,13 +1,11 @@
 package com.rental.movie.heavymetal.services.impl;
 
-import com.rental.movie.heavymetal.model.Cart;
 import com.rental.movie.heavymetal.model.Copy;
 import com.rental.movie.heavymetal.model.Order;
 import com.rental.movie.heavymetal.model.User;
 import com.rental.movie.heavymetal.repositories.CopyRepository;
 import com.rental.movie.heavymetal.repositories.OrderRepository;
 import com.rental.movie.heavymetal.repositories.UserRepository;
-import com.rental.movie.heavymetal.services.CartService;
 import com.rental.movie.heavymetal.utils.CartSummary;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Scope;

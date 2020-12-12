@@ -128,7 +128,7 @@ class CartSummaryTest {
         assertEquals(expectedInInt, resultInInt); //int Value becouse in Big Decimal Expected was 105.0 and Actual:105.00
     }
 
-    @Test
+/*    @Test
     public void shouldMakeCartSummary(){
         //given
         User user = User.builder().userType(UserType.PLATINUM).build();
@@ -146,7 +146,7 @@ class CartSummaryTest {
         //then
         int expectedInInt = 105; // 50 * 3 * 0.7
         assertEquals(expectedInInt, resultInInt); //int Value becouse in Big Decimal Expected was 105.0 and Actual:105.00
-    }
+    }*/
 
 
 
