@@ -1,13 +1,16 @@
 package com.rental.movie.heavymetal.controllers;
 
 import com.rental.movie.heavymetal.model.User;
+import com.rental.movie.heavymetal.model.UserType;
 import com.rental.movie.heavymetal.repositories.UserRepository;
 import com.rental.movie.heavymetal.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Arrays;
+import java.util.LinkedList;
 
 @Controller
 public class UserController {
@@ -31,6 +34,22 @@ public class UserController {
             return "redirect:/users";
 
     }
+
+    @GetMapping({"/addNewUser"})
+    public String newUser(Model model) {
+        model.addAttribute("userTypes", new LinkedList<UserType>(Arrays.asList(UserType.values())));
+        model.addAttribute("user", new User());
+
+        return "users/add";
+    }
+
+    @PostMapping("/save-user")
+    public String saveOrUpdate(@ModelAttribute User user){
+        userService.save(user);
+
+        return "redirect:/users";
+    }
+
 
 
     }
