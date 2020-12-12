@@ -18,7 +18,7 @@
 
 <form method="post" th:action="@{/save-user}" th:object="${user}">
 
-    <table>
+    <table class="table">
 
         <tbody>
 
@@ -76,7 +76,7 @@
 
         <tr>
             <td>
-                <button type="submit">Zapisz</button>
+                <button class="btn btn-primary" type="submit" style="margin: 2rem 0"><i class="far fa-save"></i> SAVE</button>
             </td>
         </tr>
 

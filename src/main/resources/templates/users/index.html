@@ -41,7 +41,7 @@
 
             <td>
                 <a th:href="${'/user/delete?id='+user.id}">
-                <button class="btn btn-primary">DELETE USER</button>
+                <button class="btn btn-primary"><i class="fas fa-minus-square"></i> DELETE USER</button>
                 </a>
             </td>
 
@@ -50,7 +50,7 @@
     </table>
     <section>
     <a th:href="@{'/addNewUser'}">
-        <button class="btn btn-primary">Add User</button>
+        <button class="btn btn-primary" style="margin: 2rem 0"><i class="fas fa-plus-square"></i> ADD USER</button>
     </a>
 
     </section>
@@ -58,7 +58,7 @@
 
     <section>
         <a th:href="@{'/'}">
-            <button class="btn btn-primary">RETURN</button>
+            <button class="btn btn-primary"><i class="fas fa-undo-alt"></i> RETURN</button>
         </a>
     </section>
 </div>
