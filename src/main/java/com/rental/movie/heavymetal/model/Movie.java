@@ -2,6 +2,7 @@ package com.rental.movie.heavymetal.model;
 
 import com.rental.movie.heavymetal.model.opinion.Opinion;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class Movie {
     @Enumerated
     private Genre genre;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
 
     private String description;
