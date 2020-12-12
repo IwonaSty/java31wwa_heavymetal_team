@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div>
+
+    <h1>Strona rejestracji</h1>
+
+    <form method="post" th:action="@{/registration}" th:object="${user}">
+
+        <table class="table">
+
+            <tbody>
+
+            <tr>
+                <td>
+                    <input type="hidden" th:field="*{id}">
+                </td>
+            </tr>
+
+            <tr>
+                <td th:text = "'First Name'" />
+                <td>
+                    <input type="text" th:field="*{firstName}">
+                </td>
+            </tr>
+
+            <tr>
+                <td th:text = "'Last Name'" />
+                <td>
+                    <input type="text" th:field="*{lastName}">
+                </td>
+            </tr>
+
+            <tr>
+                <td th:text = "'Email'" />
+                <td>
+                    <input type="text" th:field="*{email}">
+                </td>
+            </tr>
+
+            <tr>
+                <td th:text = "'Password'" />
+                <td>
+                    <input type="text" th:field="*{password}">
+                </td>
+            </tr>
+
+            <tr>
+                <td th:text = "'User Type'" />
+                <td>
+                    <select class="form-control" th:field="*{userType}">
+
+                        <option th:each="userType : ${userTypes}"
+                                th:value="${userType}" th:text="${userType.name}"></option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td th:text = "'Orders'" />
+                <td>
+                    <input type="hidden" th:field="*{orders}">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button class="btn btn-primary" type="submit" style="margin: 2rem 0"><i class="far fa-save"></i> SAVE</button>
+                </td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/ed613b4fb4.js" crossorigin="anonymous"></script>
+</body>
+</html>
