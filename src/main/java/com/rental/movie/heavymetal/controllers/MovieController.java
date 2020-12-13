@@ -43,6 +43,13 @@ public class MovieController {
         return "redirect:/movies/action";
 
     }
+    @RequestMapping(value="/movies/index/delete")
+    public String deleteMovieFromAll(@RequestParam Long id , Model model) {
+
+        service.delete(id);
+        return "redirect:/movies/index";
+
+    }
     @GetMapping({"/movies/horror"})
     public String getHorror(Model model) {
         model.addAttribute("genre", Genre.HORROR);

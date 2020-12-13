@@ -41,7 +41,11 @@
                 </a>
             </td>
             <td>
-                <button class="btn btn-primary">AVAILABLE COPIES</button>
+                <a th:href="${'/movies/index/delete?id='+ movie.id}">
+
+                    <button class="btn btn-primary">DELETE</button>
+
+                </a>
             </td>
         </tr>
         </tbody>
