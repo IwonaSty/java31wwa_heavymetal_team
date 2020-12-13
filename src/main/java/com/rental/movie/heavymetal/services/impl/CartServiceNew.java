@@ -10,6 +10,7 @@ import com.rental.movie.heavymetal.utils.CartSummary;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -79,6 +80,7 @@ public class CartServiceNew {
         orderRepository.save(newOrder);
         userRepository.save(user);
         clearCart();
+        SecurityContextHolder.getContext().
     }
 
 
@@ -86,6 +88,8 @@ public class CartServiceNew {
         copiesWithRentalDays.clear();
         totalCost = BigDecimal.ZERO;
     }
+
+
 
 
 
