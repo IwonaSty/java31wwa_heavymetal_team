@@ -7,12 +7,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 
 @Controller
 @Slf4j
 public class CartController {
 
     private final CartServiceNew cartServiceNew;
+
 
     public CartController(final CartServiceNew cartServiceNew) {
         this.cartServiceNew = cartServiceNew;
@@ -21,8 +26,10 @@ public class CartController {
 
     @GetMapping("/cart-summary")
     public String showCart(Model model) {
-        model.addAttribute("copies", cartServiceNew.getCopiesFromCart());
         model.addAttribute("total", cartServiceNew.getTotalCost());
+        Map<Copy,Integer> copiesWithRenatalDays = cartServiceNew.getCopiesFromCart();
+        Set<Copy> copies = copiesWithRenatalDays.keySet();
+        model.addAttribute("copies",copies);
         return "cart/cart-summary";
     }
 
