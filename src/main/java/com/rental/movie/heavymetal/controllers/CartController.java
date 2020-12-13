@@ -3,6 +3,8 @@ package com.rental.movie.heavymetal.controllers;
 import com.rental.movie.heavymetal.model.*;
 import com.rental.movie.heavymetal.services.impl.CartServiceNew;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +27,8 @@ public class CartController {
 
 
     @GetMapping("/cart-summary")
-    public String showCart(Model model) {
+    public String showCart(Model model, @AuthenticationPrincipal User user) {
+        cartServiceNew.setCurrentUser(user);
         model.addAttribute("total", cartServiceNew.getTotalCost());
         Map<Copy,Integer> copiesWithRenatalDays = cartServiceNew.getCopiesFromCart();
         Set<Copy> copies = copiesWithRenatalDays.keySet();

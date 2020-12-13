@@ -35,10 +35,7 @@ public class CartServiceNew {
     private BigDecimal totalCost = BigDecimal.ZERO;
     private LocalDate rentalDate = LocalDate.now();
 
-    private User user = getCurrentUser();
-
-
-
+    private User user; //= getCurrentUser();
 
 
     public User getCurrentUser(){
@@ -46,7 +43,9 @@ public class CartServiceNew {
         return userRepository.findByEmail(email);
     }
 
-
+    public void setCurrentUser(org.springframework.security.core.userdetails.User user) {
+        this.user = userRepository.findByEmail(user.getUsername());
+    }
 
 
     //TODO!!!!!!!!!!!!!
