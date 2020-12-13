@@ -95,6 +95,96 @@ public class MovieController {
         return "redirect:/movies/scifi";
 
     }
+    @GetMapping({"/movies/fantasy"})
+    public String getFantasy(Model model) {
+        model.addAttribute("genre", Genre.FANTASY);
+        model.addAttribute("movies", service.findAllByGenre(Genre.FANTASY));
+        return "movies/scifi";
+    }
+
+
+    @RequestMapping(value="/movies/fantasy/delete")
+    public String deleteFantasy(@RequestParam Long id , Model model) {
+
+        service.delete(id);
+        return "redirect:/movies/fantasy";
+
+    }
+    @GetMapping({"/movies/cartoon"})
+    public String getCartoon(Model model) {
+        model.addAttribute("genre", Genre.CARTOON);
+        model.addAttribute("movies", service.findAllByGenre(Genre.CARTOON));
+        return "movies/cartoon";
+    }
+
+
+    @RequestMapping(value="/movies/cartoon/delete")
+    public String deleteCartoon(@RequestParam Long id , Model model) {
+
+        service.delete(id);
+        return "redirect:/movies/cartoon";
+
+    }
+    @GetMapping({"/movies/comedy"})
+    public String getComedy(Model model) {
+        model.addAttribute("genre", Genre.COMEDY);
+        model.addAttribute("movies", service.findAllByGenre(Genre.COMEDY));
+        return "movies/cartoon";
+    }
+
+
+    @RequestMapping(value="/movies/comedy/delete")
+    public String deleteComedy(@RequestParam Long id , Model model) {
+
+        service.delete(id);
+        return "redirect:/movies/comedy";
+
+    }
+    @GetMapping({"/movies/drama"})
+    public String getDrama(Model model) {
+        model.addAttribute("genre", Genre.DRAMA);
+        model.addAttribute("movies", service.findAllByGenre(Genre.DRAMA));
+        return "movies/drama";
+    }
+
+
+    @RequestMapping(value="/movies/drama/delete")
+    public String deleteDrama(@RequestParam Long id , Model model) {
+
+        service.delete(id);
+        return "redirect:/movies/drama";
+
+    }
+    @GetMapping({"/movies/western"})
+    public String getWestern(Model model) {
+        model.addAttribute("genre", Genre.WESTERN);
+        model.addAttribute("movies", service.findAllByGenre(Genre.WESTERN));
+        return "movies/western";
+    }
+
+
+    @RequestMapping(value="/movies/western/delete")
+    public String deleteWestern(@RequestParam Long id , Model model) {
+
+        service.delete(id);
+        return "redirect:/movies/western";
+
+    }
+    @GetMapping({"/movies/adventure"})
+    public String getAdventure(Model model) {
+        model.addAttribute("genre", Genre.ADVENTURE);
+        model.addAttribute("movies", service.findAllByGenre(Genre.ADVENTURE));
+        return "movies/adventure";
+    }
+
+
+    @RequestMapping(value="/movies/adventure/delete")
+    public String deleteAdventure(@RequestParam Long id , Model model) {
+
+        service.delete(id);
+        return "redirect:/movies/adventure";
+
+    }
 
 
     @GetMapping("/movie")
