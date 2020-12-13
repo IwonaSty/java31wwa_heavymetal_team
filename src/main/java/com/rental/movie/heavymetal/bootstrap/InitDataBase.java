@@ -669,18 +669,15 @@ public class InitDataBase implements CommandLineRunner {
     public void initUsers() {
         Role role1 = new Role();
         role1.setName("USER");
-        roleService.save(role1);
-
+        role1 = roleService.save(role1);
         Role role2 = new Role();
         role2.setName("ADMIN");
-        roleService.save(role2);
-
+        role2 = roleService.save(role2);
         List<Role> list1 = new LinkedList<>();
         list1.add(role1);
         List<Role> list2 = new LinkedList<>();
         list2.add(role2);
-
-
+        //user
         User user1 = User.builder()
                 .firstName("John")
                 .lastName("Krasinski")
@@ -689,9 +686,8 @@ public class InitDataBase implements CommandLineRunner {
                 .userType(UserType.GOLD)
                 .build();
         user1.setRoles(list1);
-
         userRepository.save(user1);
-
+        //admin
         User user2 = User.builder()
                 .firstName("Roman")
                 .lastName("Polanski")
@@ -701,8 +697,7 @@ public class InitDataBase implements CommandLineRunner {
                 .build();
         user2.setRoles(list2);
         userRepository.save(user2);
-
-
+        //user
         User user3 = User.builder()
                 .firstName("Luke")
                 .lastName("Skywalker")
@@ -712,7 +707,7 @@ public class InitDataBase implements CommandLineRunner {
                 .build();
         user3.setRoles(list1);
         userRepository.save(user3);
-
+        //user
         User user4 = User.builder()
                 .firstName("Amadeusz")
                 .lastName("Mozart")
@@ -721,7 +716,7 @@ public class InitDataBase implements CommandLineRunner {
                 .userType(UserType.GOLD)
                 .build();
         user4.setRoles(list1);
-
+        //no role
         userRepository.save(user4);
         User user5 = User.builder()
                 .firstName("awfsa")
@@ -730,7 +725,6 @@ public class InitDataBase implements CommandLineRunner {
                 .password("$2a$10$gQuB16dflwFLHC/eo1PiUeYJE.XOAeqNtvmkaqtk6rWqIJMn279Ly")
                 .userType(UserType.GOLD)
                 .build();
-
         userRepository.save(user5);
     }
 
