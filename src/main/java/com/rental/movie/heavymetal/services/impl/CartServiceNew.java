@@ -51,8 +51,7 @@ public class CartServiceNew {
 
     //TODO!!!!!!!!!!!!!
     public Copy getAvailableCopy(Movie movie) {
-      //  movie.getCopies().stream().findFirst() //TODO jak sprawdzić czy kopia jest dostępna?!
-        return null;
+      return  movie.getCopies().stream().findFirst().orElse(null);
     }
 
 
@@ -65,6 +64,11 @@ public class CartServiceNew {
             copiesWithRentalDays.put(copy, rentalDays);
             makeCartSummary();
         }
+    }
+
+    public void addMovie(Movie movie, Integer rentalDays) throws Exception {
+        Copy copy = getAvailableCopy(movie);
+        addCopy(copy, rentalDays);
     }
 
 
