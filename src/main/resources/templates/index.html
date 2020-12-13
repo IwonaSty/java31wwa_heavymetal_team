@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
     <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+    .button{
+    color: grey;
+    }
 
 
 </head>
@@ -53,6 +56,11 @@
                     <li class="nav-item">
                         <a class="nav-link">Basket</a>
                     </li>
+
+                        <a th:href="@{'/logout'}">
+                            <button  class="btn btn-primary" >logout</button>
+                        </a>
+
                 </ul>
             </div>
         </nav>
