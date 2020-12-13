@@ -28,7 +28,7 @@ public class CartController {
 
     @PostMapping("/cart-summary")
     public String saveMovie(@ModelAttribute Order order) {
-        cartServiceNew.newOrder();
+    //    cartServiceNew.newOrder();
         log.info("Your order has been confirmed: " + order);
 
         return "redirect:/movies";
@@ -37,7 +37,7 @@ public class CartController {
     @RequestMapping(value="/copies/delete")
     public String deleteMovie(@RequestParam Long id , Model model) {
 
-        cartServiceNew.removeCopy(id);
+    //    cartServiceNew.removeCopy(id);
         return "redirect:/movies/action";
 
     }

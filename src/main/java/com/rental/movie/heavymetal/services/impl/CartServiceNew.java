@@ -1,6 +1,7 @@
 package com.rental.movie.heavymetal.services.impl;
 
 import com.rental.movie.heavymetal.model.Copy;
+import com.rental.movie.heavymetal.model.Movie;
 import com.rental.movie.heavymetal.model.Order;
 import com.rental.movie.heavymetal.model.User;
 import com.rental.movie.heavymetal.repositories.CopyRepository;
@@ -34,21 +35,43 @@ public class CartServiceNew {
     private BigDecimal totalCost = BigDecimal.ZERO;
     private LocalDate rentalDate = LocalDate.now();
 
+    private User user = getCurrentUser();
 
-    public void addCopy(User user, Copy copy, Integer rentalDays) throws Exception {
+
+
+
+
+    public User getCurrentUser(){
+       String email = SecurityContextHolder.getContext().getAuthentication().getName();
+       User user = userRepository.findByEmail(email);
+       return user;
+    }
+
+
+
+    //TODO!!!!!!!!!!!!!
+    public Copy getAvailableCopy(Movie movie) {
+      //  movie.getCopies().stream().findFirst() //TODO jak sprawdzić czy kopia jest dostępna?!
+        return null;
+    }
+
+
+
+
+    public void addCopy(Copy copy, Integer rentalDays) throws Exception {
         if (copiesWithRentalDays.containsKey(copy)) {
             throw new Exception();
         } else {
             copiesWithRentalDays.put(copy, rentalDays);
-            makeCartSummary(user);
+            makeCartSummary();
         }
     }
 
 
-    public void removeCopy(User user, Copy copy) throws Exception {
+    public void removeCopy(Copy copy) throws Exception {
         if (copiesWithRentalDays.containsKey(copy)) {
             copiesWithRentalDays.remove(copy);
-            makeCartSummary(user);
+            makeCartSummary();
         } else {
             throw new Exception();
         }
@@ -60,7 +83,7 @@ public class CartServiceNew {
     }
 
 
-    public void makeCartSummary(User user){
+    public void makeCartSummary(){
         Set<Map.Entry<Copy, Integer>> entrySet = copiesWithRentalDays.entrySet();
         for (Map.Entry<Copy, Integer> entry : entrySet){
             BigDecimal costOfCopy = cartSummary.calculateCostOfCopy(user, entry.getKey(), entry.getValue(), rentalDate );
@@ -72,15 +95,14 @@ public class CartServiceNew {
         return totalCost;
     }
 
-    public void order (User user){
+    public void order (){
         Order newOrder = new Order();
         newOrder.setOrderDate(rentalDate);
         newOrder.setUser(user);
-        //TODO - order probably should have Collections with Copies
+        newOrder.setCopiesWithRentalDays(copiesWithRentalDays);
         orderRepository.save(newOrder);
         userRepository.save(user);
         clearCart();
-        SecurityContextHolder.getContext().
     }
 
 
