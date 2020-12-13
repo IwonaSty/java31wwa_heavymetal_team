@@ -1,7 +1,6 @@
 package com.rental.movie.heavymetal.services.impl;
 
 import com.rental.movie.heavymetal.model.Copy;
-import com.rental.movie.heavymetal.model.Movie;
 import com.rental.movie.heavymetal.model.Order;
 import com.rental.movie.heavymetal.model.User;
 import com.rental.movie.heavymetal.repositories.CopyRepository;
@@ -15,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
+import javax.swing.*;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -35,47 +35,21 @@ public class CartServiceNew {
     private BigDecimal totalCost = BigDecimal.ZERO;
     private LocalDate rentalDate = LocalDate.now();
 
-    private User user = getCurrentUser();
 
-
-
-
-
-    public User getCurrentUser(){
-       String email = SecurityContextHolder.getContext().getAuthentication().getName();
-       User user = userRepository.findByEmail(email);
-       return user;
-    }
-
-
-
-    //TODO!!!!!!!!!!!!!
-    public Copy getAvailableCopy(Movie movie) {
-      return  movie.getCopies().stream().findFirst().orElse(null);
-    }
-
-
-
-
-    public void addCopy(Copy copy, Integer rentalDays) throws Exception {
+    public void addCopy(User user, Copy copy, Integer rentalDays) throws Exception {
         if (copiesWithRentalDays.containsKey(copy)) {
             throw new Exception();
         } else {
             copiesWithRentalDays.put(copy, rentalDays);
-            makeCartSummary();
+            makeCartSummary(user);
         }
     }
 
-    public void addMovie(Movie movie, Integer rentalDays) throws Exception {
-        Copy copy = getAvailableCopy(movie);
-        addCopy(copy, rentalDays);
-    }
 
-
-    public void removeCopy(Copy copy) throws Exception {
+    public void removeCopy(User user, Copy copy) throws Exception {
         if (copiesWithRentalDays.containsKey(copy)) {
             copiesWithRentalDays.remove(copy);
-            makeCartSummary();
+            makeCartSummary(user);
         } else {
             throw new Exception();
         }
@@ -87,7 +61,7 @@ public class CartServiceNew {
     }
 
 
-    public void makeCartSummary(){
+    public void makeCartSummary(User user){
         Set<Map.Entry<Copy, Integer>> entrySet = copiesWithRentalDays.entrySet();
         for (Map.Entry<Copy, Integer> entry : entrySet){
             BigDecimal costOfCopy = cartSummary.calculateCostOfCopy(user, entry.getKey(), entry.getValue(), rentalDate );
@@ -99,14 +73,15 @@ public class CartServiceNew {
         return totalCost;
     }
 
-    public void order (){
+    public void order (User user){
         Order newOrder = new Order();
         newOrder.setOrderDate(rentalDate);
         newOrder.setUser(user);
-        newOrder.setCopiesWithRentalDays(copiesWithRentalDays);
+        //TODO - order probably should have Collections with Copies
         orderRepository.save(newOrder);
         userRepository.save(user);
         clearCart();
+        SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
 
