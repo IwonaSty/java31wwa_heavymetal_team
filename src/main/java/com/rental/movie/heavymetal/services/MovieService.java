@@ -5,6 +5,7 @@ import com.rental.movie.heavymetal.model.Movie;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface MovieService {
 
@@ -23,6 +24,9 @@ public interface MovieService {
     Movie findByDirector(String director);
 
     Movie findByGenre(Genre genre);
+//    Movie findByGenresIn(List<Genre> genre); propozycja przemka
+
+    Set<Movie> findAllByGenre(Genre genre);
 
 
 }

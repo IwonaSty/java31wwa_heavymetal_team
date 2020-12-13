@@ -6,10 +6,7 @@ import com.rental.movie.heavymetal.services.MovieService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Arrays;
@@ -30,6 +27,68 @@ public class MovieController {
         model.addAttribute("movies", service.getAll());
         return "movies/index";
     }
+
+    @GetMapping({"/movies/action"})
+    public String getAction(Model model) {
+        model.addAttribute("genre", Genre.ACTION);
+        model.addAttribute("movies", service.findAllByGenre(Genre.ACTION));
+        return "movies/action";
+    }
+
+
+    @RequestMapping(value="/movies/action/delete")
+    public String deleteMovie(@RequestParam Long id , Model model) {
+
+        service.delete(id);
+        return "redirect:/movies/action";
+
+    }
+    @GetMapping({"/movies/horror"})
+    public String getHorror(Model model) {
+        model.addAttribute("genre", Genre.HORROR);
+        model.addAttribute("movies", service.findAllByGenre(Genre.HORROR));
+        return "movies/horror";
+    }
+
+
+    @RequestMapping(value="/movies/horror/delete")
+    public String deleteHorror(@RequestParam Long id , Model model) {
+
+        service.delete(id);
+        return "redirect:/movies/horror";
+
+    }
+    @GetMapping({"/movies/documentary"})
+    public String getDocumentary(Model model) {
+        model.addAttribute("genre", Genre.DOCUMENTARY);
+        model.addAttribute("movies", service.findAllByGenre(Genre.DOCUMENTARY));
+        return "movies/documentary";
+    }
+
+
+    @RequestMapping(value="/movies/documentary/delete")
+    public String deleteDocumentary(@RequestParam Long id , Model model) {
+
+        service.delete(id);
+        return "redirect:/movies/documentary";
+
+    }
+    @GetMapping({"/movies/scifi"})
+    public String getSciFi(Model model) {
+        model.addAttribute("genre", Genre.SCI_FI);
+        model.addAttribute("movies", service.findAllByGenre(Genre.SCI_FI));
+        return "movies/scifi";
+    }
+
+
+    @RequestMapping(value="/movies/scifi/delete")
+    public String deleteSciFi(@RequestParam Long id , Model model) {
+
+        service.delete(id);
+        return "redirect:/movies/scifi";
+
+    }
+
 
     @GetMapping("/movie")
     public String getOneWorker(@RequestParam Long id, Model model) {

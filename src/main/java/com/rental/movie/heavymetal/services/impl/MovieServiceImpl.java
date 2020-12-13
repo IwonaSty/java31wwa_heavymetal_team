@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -62,6 +63,11 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Movie findByGenre(Genre genre) {
         return repository.findByGenre(genre).orElse(null);
+    }
+
+    @Override
+    public Set<Movie> findAllByGenre(Genre genre) {
+        return repository.findAllByGenre(genre);
     }
 
 
