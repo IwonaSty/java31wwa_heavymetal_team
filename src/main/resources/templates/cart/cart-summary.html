@@ -16,80 +16,40 @@
     <link th:href="@{/css/styles.css}" rel="stylesheet"/>
 </head>
 <body>
+<div class="container-fluid">
 
+    <table class="table">
 
-<form method="post" th:action="@{/save-movie}" th:object="${movie}">
+        <thead>
 
-    <table>
+        <tr>
+            <td>MOVIE TITLE</td>
+            <td>MOVIE GENRE</td>
+        </tr>
+
+        </thead>
 
         <tbody>
 
-        <!--        <tr>-->
-        <!--            <td>-->
-        <!--                <input type="hidden" th:field="*{id}">-->
-        <!--            </td>-->
-        <!--        </tr>-->
+            <tr th:each="copy:${copies}">
 
-        <tr>
+                <td th:text="${copy.movie.title}"></td>
+                <td th:text =${copy.movie.genre.name} ></td>
 
-            <td th:text = "'Title'" />
-            <td>
-                <input type="text" th:field="*{title}">
-            </td>
-        </tr>
-
-        <tr>
-            <td th:text = "Director" />
-            <td>
-                <input type="text" th:field="*{director}">
-            </td>
-        </tr>
-
-        <tr>
-            <td th:text = "Genre" />
-            <td>
-                <select class="form-control" th:field="*{genre}">
-                    <option th:each="genre : ${genre}"
-                            th:value="${genre}" th:text="${genre.name}"></option>
-                </select>
-            </td>
-
-
-        </tr>
-
-        <tr>
-            <td th:text = "ReleaseDate" />
-            <td>
-                <input type="date" th:field="*{releaseDate}">
-            </td>
-        </tr>
-        <tr>
-            <td th:text = "Description" />
-            <td>
-                <input type="text" th:field="*{description}">
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <button type="submit">Save</button>
-            </td>
-        </tr>
+            </tr>
 
         </tbody>
 
+
     </table>
 
-</form>
+    <h1 th:text="${total}"></h1>
 
-<td>
+    <div>
+        <button class="btn btn-primary">ORDER</button>
+    </div>
 
-    <a th:href="@{'/'}">
-        <button class="btn btn-primary">RETURN</button>
-    </a>
-</td>
-
-
+</div>
 
 
 

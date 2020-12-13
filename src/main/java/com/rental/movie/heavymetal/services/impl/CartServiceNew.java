@@ -43,9 +43,9 @@ public class CartServiceNew {
 
     public User getCurrentUser(){
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userRepository.findByEmail(email);
-        return user;
+        return userRepository.findByEmail(email);
     }
+
 
 
 
