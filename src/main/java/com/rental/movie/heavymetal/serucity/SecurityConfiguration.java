@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -67,13 +68,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(daoAuthenticationProvider());
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth)
-            throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("ordinaryUser").password(bCryptPasswordEncoder().encode("password")).roles("USER")
-                .and()
-                .withUser("crazyAdmin").password(bCryptPasswordEncoder().encode("admin")).roles("ADMIN");
-    }
 }

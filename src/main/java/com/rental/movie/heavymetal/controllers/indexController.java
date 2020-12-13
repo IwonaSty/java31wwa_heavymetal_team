@@ -2,7 +2,9 @@ package com.rental.movie.heavymetal.controllers;
 
 import com.rental.movie.heavymetal.model.Genre;
 import org.dom4j.rule.Mode;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +16,9 @@ import java.util.List;
 @Controller
 public class indexController {
     @GetMapping({"/","","/index"})
-    public String index(Model model) {
+    public String index(Model model, @AuthenticationPrincipal User user) {
 
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-
-        model.addAttribute("currentUser", username);
+        model.addAttribute("currentUser", user);
 
 //        List<Genre> genres = new LinkedList<>();
 //        Arrays.stream(Genre.values()).sorted().forEach(genres::add);

@@ -20,7 +20,7 @@ public class User {
     private Long id;
     private String firstName;
     private String lastName;
-    private String email;
+    private String email;   //todo: domyslnie Spring zaklada 'username'
     private String password;
     @Enumerated
     private UserType userType;

@@ -32,10 +32,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             roleList.add(role.getName());
         }
 
-        return org.springframework.security.core.userdetails.User.builder()
+        var springUser = org.springframework.security.core.userdetails.User.builder()
                 .username(userFromDb.getEmail())
                 .password(userFromDb.getPassword())
                 .roles(roleList.toArray(new String[0]))
                 .build();
+
+        return springUser;
     }
 }

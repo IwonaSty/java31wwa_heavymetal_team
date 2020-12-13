@@ -79,8 +79,9 @@
                 This content is only shown to users.
             </div>
 
-            Logged user: <span sec:authentication="name">Bob</span>
-            Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+            Logged user: <span sec:authentication="name"/><br>
+            Roles: <span sec:authentication="principal.authorities"/><br>
+            Current user: <div th:text="${currentUser}"></div>
             <div id="center-small">
 
                 <a href="">
