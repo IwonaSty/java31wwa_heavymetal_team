@@ -702,6 +702,7 @@ public class InitDataBase implements CommandLineRunner {
         user2.setRoles(list2);
         userRepository.save(user2);
 
+
         User user3 = User.builder()
                 .firstName("Luke")
                 .lastName("Skywalker")
@@ -722,6 +723,15 @@ public class InitDataBase implements CommandLineRunner {
         user4.setRoles(list1);
 
         userRepository.save(user4);
+        User user5 = User.builder()
+                .firstName("awfsa")
+                .lastName("fasfas")
+                .email("aaa.aaa@poczta.de")
+                .password("$2a$10$gQuB16dflwFLHC/eo1PiUeYJE.XOAeqNtvmkaqtk6rWqIJMn279Ly")
+                .userType(UserType.GOLD)
+                .build();
+
+        userRepository.save(user5);
     }
 
 
