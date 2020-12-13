@@ -29,6 +29,7 @@
             <td><h2>MOVIE TITLE</h2></td>
             <td></td>
             <td></td>
+            <td></td>
         </tr>
 
         </thead>
@@ -44,6 +45,13 @@
                 <a th:href="${'/movies/delete?id='+ movie.id}">
 
                     <button class="btn btn-primary">DELETE</button>
+
+                </a>
+            </td>
+            <td>
+                <a th:href="${'/movies/addToBasket?id=' +movie.id}">
+
+                    <button class="btn btn-primary">ADD TO BASKET</button>
 
                 </a>
             </td>

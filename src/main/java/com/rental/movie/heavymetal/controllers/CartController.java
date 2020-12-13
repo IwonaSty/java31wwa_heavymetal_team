@@ -1,6 +1,7 @@
 package com.rental.movie.heavymetal.controllers;
 
 import com.rental.movie.heavymetal.model.*;
+import com.rental.movie.heavymetal.services.MovieService;
 import com.rental.movie.heavymetal.services.impl.CartServiceNew;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -18,10 +18,13 @@ import java.util.Set;
 @Slf4j
 public class CartController {
 
+    private final MovieService movieService;
+
     private final CartServiceNew cartServiceNew;
 
 
-    public CartController(final CartServiceNew cartServiceNew) {
+    public CartController(MovieService movieService, final CartServiceNew cartServiceNew) {
+        this.movieService = movieService;
         this.cartServiceNew = cartServiceNew;
     }
 
@@ -49,6 +52,18 @@ public class CartController {
 
     //    cartServiceNew.removeCopy(id);
         return "redirect:/movies/action";
+
+    }
+
+
+    @GetMapping("/movies/addToBasket")
+    public String getOneWorker(@RequestParam Long id, Model model, @AuthenticationPrincipal User user) throws Exception {
+        cartServiceNew.setCurrentUser(user);
+        Movie movie = movieService.getById(id);
+
+        cartServiceNew.addMovie(movie,2);
+
+        return "index";
 
     }
 
